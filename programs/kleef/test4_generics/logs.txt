@@ -1,0 +1,12 @@
+go list -json | /utbotgo/utils/bin/package_config_parser Name utbotgo/package/name.txt ImportPath utbotgo/package/import_path.txt GoFiles utbotgo/package/go_files.txt
+/utbotgo/utils/bin/pseudo_name_getter utbotgo/package/name.txt utbotgo/package/import_path.txt utbotgo/package/pseudo_name.txt
+/utbotgo/utils/bin/go2ll utbotgo/package utbotgo/package/llvm_bitcode.ll utbotgo/package/go_files.txt
+make[1]: Entering directory '/workspace'
+WORK=utbotgo/package; /go/bin/llvm-goc -c -O0 -g -m64 -fdebug-prefix-map=$WORK=/tmp/go-build -gno-record-gcc-switches -o utbotgo/package/llvm_bitcode.ll -S -emit-llvm -I $WORK/b001/_importcfgroot_ ./generics.go
+./generics.go:3:8: error: expected '('
+./generics.go:3:11: error: expected ']'
+./generics.go:3:11: error: expected ';' or newline after top level declaration
+./generics.go:5:1: error: expected declaration
+make[1]: *** [/dev/fd/63:5: utbotgo/package/llvm_bitcode.ll] Error 3
+make[1]: Leaving directory '/workspace'
+make: *** [/utbotgo/workspace_files/Makefile:28: update_package_llvm_bitcode] Error 2

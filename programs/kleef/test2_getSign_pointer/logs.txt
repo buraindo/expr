@@ -1,0 +1,37 @@
+go list -json | /utbotgo/utils/bin/package_config_parser Name utbotgo/package/name.txt ImportPath utbotgo/package/import_path.txt GoFiles utbotgo/package/go_files.txt
+/utbotgo/utils/bin/pseudo_name_getter utbotgo/package/name.txt utbotgo/package/import_path.txt utbotgo/package/pseudo_name.txt
+/utbotgo/utils/bin/go2ll utbotgo/package utbotgo/package/llvm_bitcode.ll utbotgo/package/go_files.txt
+make[1]: Entering directory '/workspace'
+WORK=utbotgo/package; /go/bin/llvm-goc -c -O0 -g -m64 -fdebug-prefix-map=$WORK=/tmp/go-build -gno-record-gcc-switches -o utbotgo/package/llvm_bitcode.ll -S -emit-llvm -I $WORK/b001/_importcfgroot_ ./get_sign.go
+make[1]: Leaving directory '/workspace'
+echo "{" > utbotgo/package/file_templates.json
+echo "    \"args\": \"utbotgo/functions/%/args.json\"," >> utbotgo/package/file_templates.json
+echo "    \"answers\": \"utbotgo/functions/%/answers.json\"," >> utbotgo/package/file_templates.json
+echo "    \"results\": \"utbotgo/functions/%/results.json\"" >> utbotgo/package/file_templates.json
+echo "}" >> utbotgo/package/file_templates.json
+/utbotgo/utils/bin/params_parser --go-files $(cat utbotgo/package/go_files.txt) --klee utbotgo/functions/%/klee_types.json --ta utbotgo/functions/%/ta_types.json getSign
+mkdir -p utbotgo/functions/getSign
+/utbotgo/utils/bin/ll_modifier utbotgo/package/llvm_bitcode.ll utbotgo/functions/getSign/llvm_bitcode.ll $(cat utbotgo/package/pseudo_name.txt) getSign
+klee --disable-verify --external-calls=all --entry-point=klee.main utbotgo/functions/getSign/llvm_bitcode.ll
+KLEE: output directory is "/workspace/utbotgo/functions/getSign/klee-out-0"
+KLEE: Using Z3 solver backend
+KLEE: WARNING: undefined reference to function: internal_1cpu..import
+KLEE: WARNING: undefined reference to function: runtime..import
+KLEE: WARNING: undefined reference to function: runtime.gList.empty
+KLEE: WARNING: undefined reference to function: runtime.gList.pop
+KLEE: WARNING: undefined reference to function: runtime.gList.push
+KLEE: WARNING: undefined reference to function: runtime.gList.pushAll
+KLEE: WARNING: undefined reference to function: runtime.goPanicIndex
+KLEE: WARNING: undefined reference to function: runtime.memequal
+KLEE: WARNING: undefined reference to function: runtime.panicmem
+KLEE: WARNING: undefined reference to function: runtime.registerTypeDescriptors
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: ERROR: (location information missing) Wrong size given to klee_make_symbolic
+KLEE: NOTE: now ignoring this error at this location
+
+KLEE: done: total instructions = 3
+KLEE: done: completed paths = 0
+KLEE: done: partially completed paths = 1
+KLEE: done: generated tests = 1
+ktest-tool --total-types utbotgo/functions/getSign/klee_types.json --to-json utbotgo/functions/getSign/klee-last/test000001.ktest > utbotgo/functions/getSign/args.json
+make: *** [/utbotgo/workspace_files/Makefile:68: utbotgo/functions/getSign/args.json] Error 1

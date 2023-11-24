@@ -1,0 +1,16 @@
+KLEE: WARNING: undefined reference to function: __go_go
+KLEE: WARNING: undefined reference to function: internal_1cpu..import
+KLEE: WARNING: undefined reference to function: runtime..import
+KLEE: WARNING: undefined reference to function: runtime.gList.empty
+KLEE: WARNING: undefined reference to function: runtime.gList.pop
+KLEE: WARNING: undefined reference to function: runtime.gList.push
+KLEE: WARNING: undefined reference to function: runtime.gList.pushAll
+KLEE: WARNING: undefined reference to function: runtime.goPanicIndex
+KLEE: WARNING: undefined reference to function: runtime.memequal
+KLEE: WARNING: undefined reference to function: runtime.panicmem
+KLEE: WARNING: undefined reference to function: runtime.printlock
+KLEE: WARNING: undefined reference to function: runtime.printstring
+KLEE: WARNING: undefined reference to function: runtime.printunlock
+KLEE: WARNING: undefined reference to function: runtime.registerTypeDescriptors
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: __go_go(0, 94670667056000, 0) at goroutine.go:7 5

@@ -1,0 +1,1 @@
+{"package": {"name": "main"}, "files": {"args": {"name": "utbotgo/functions/goroutine/args.json"}, "answers": {"name": "utbotgo/functions/goroutine/answers.json"}, "results": {"name": "utbotgo/functions/goroutine/results.json"}}, "func": {"name": "goroutine", "args": [{"name": "a", "type": "int"}], "results": [{"name": "", "type": "int"}]}, "args": [{"a": "0"}], "answers": []}

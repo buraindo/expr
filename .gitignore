@@ -1,6 +1,7 @@
 .idea/
 gollvm/
 klee/
+klee-last
 ssaview/
 tools/
 usvm/

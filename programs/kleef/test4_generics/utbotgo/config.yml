@@ -1,0 +1,3 @@
+# This section describes functions which you want to test.
+tested-functions:
+  - id # function with name `example_1` will be tested

@@ -1,0 +1,8 @@
+Error: failed external call: __go_go
+File: goroutine.go
+Line: 4
+assembly.ll line: 153
+State: 1
+Stack: 
+	#000000153 in main.goroutine (nest.0=0, a) at goroutine.go:4
+	#100001604 in klee.main ()
