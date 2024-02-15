@@ -1,5 +1,7 @@
 package main
 
+import "sort"
+
 func alloc(l int) []int {
 	arr := make([]int, l)
 	if l < 5 || l > 10 {
@@ -55,6 +57,22 @@ func sumArray(nums []int) int {
 		}
 	}
 	return res
+}
+
+func compare(nums []int) int {
+	i := nums[0]
+	j := nums[1]
+	if i < j {
+		return i
+	}
+	return j
+}
+
+func castSlice(arr []int) []int {
+	s := sort.IntSlice(arr)
+	x := s[0]
+	s[0] = x + 2
+	return []int(s)
 }
 
 func main() {}

@@ -27,6 +27,14 @@ func lookupComma(m map[int]int, k int) int {
 	return v
 }
 
+func lookupCommaReturn(m map[int]int, k int) (int, bool) {
+	v, ok := m[k]
+	if ok {
+		return v, true
+	}
+	return -1, false
+}
+
 func update(m map[int]int, k, v int) int {
 	vOld := m[k]
 	m[k] = v

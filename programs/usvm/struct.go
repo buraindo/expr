@@ -27,4 +27,15 @@ func setPerfectAge(p Person) int {
 	return p.Age
 }
 
+func (p Person) isYoung() bool {
+	return !isOld(p)
+}
+
+func (p Person) getStringGender() string {
+	if p.Gender {
+		return "w*man"
+	}
+	return "sigma male"
+}
+
 func main() {}

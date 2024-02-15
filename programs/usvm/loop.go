@@ -72,4 +72,31 @@ func sum(n int) int {
 	return res
 }
 
+func rangeMap(m map[int]int, target int) (int, bool) {
+	for k, v := range m {
+		if v == target {
+			return k, true
+		}
+	}
+	return -1, false
+}
+
+func rangeString(s string, target rune) int {
+	state := 0
+	if len(s) == 0 {
+		state = 1
+	}
+
+	other := "hello"
+	for i, v := range s {
+		if s[i] == other[i] {
+			state = 2
+		}
+		if v == target {
+			state = 3
+		}
+	}
+	return state
+}
+
 func main() {}

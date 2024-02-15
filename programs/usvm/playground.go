@@ -1,7 +1,14 @@
 package main
 
-func play(h string) byte {
-	return h[0]
+func returnString(i int) string {
+	switch i {
+	case 0:
+		return "hello"
+	case 1:
+		return "world"
+	default:
+		return "hello, world!"
+	}
 }
 
 func main() {}
