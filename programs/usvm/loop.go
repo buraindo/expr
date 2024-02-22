@@ -73,6 +73,9 @@ func sum(n int) int {
 }
 
 func rangeMap(m map[int]int, target int) (int, bool) {
+	if len(m) < 5 {
+		return 1, false
+	}
 	for k, v := range m {
 		if v == target {
 			return k, true
