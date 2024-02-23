@@ -75,4 +75,9 @@ func castSlice(arr []int) []int {
 	return []int(s)
 }
 
+func sliceToArrayPointer(arr []int) int {
+	a := (*[4]int)(arr)
+	return a[2]
+}
+
 func main() {}
