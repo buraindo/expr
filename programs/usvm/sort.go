@@ -1,5 +1,7 @@
 package main
 
+import "sort"
+
 func count(data []int) []int {
 	l := len(data)
 	if l == 0 || l > 3 {
@@ -63,6 +65,21 @@ func bubble(arr []int) []int {
 		for i := 0; i < len(arr)-1; i++ {
 			if arr[i+1] < arr[i] {
 				arr[i+1], arr[i] = arr[i], arr[i+1]
+				swapped = true
+			}
+		}
+	}
+	return arr
+}
+
+func bubbleCast(a []int) []int {
+	arr := sort.IntSlice(a)
+	swapped := true
+	for swapped {
+		swapped = false
+		for i := 0; i < arr.Len()-1; i++ {
+			if arr.Less(i+1, i) {
+				arr.Swap(i+1, i)
 				swapped = true
 			}
 		}
