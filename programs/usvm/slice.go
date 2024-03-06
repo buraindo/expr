@@ -90,6 +90,18 @@ func sliceArray(arr []int) []int {
 	return arr[1:3]
 }
 
+func sliceArrayLowNil(arr []int) []int {
+	return arr[:3]
+}
+
+func sliceArrayHighNil(arr []int) []int {
+	return arr[0:]
+}
+
+func sliceArrayLowHighNil(arr []int) []int {
+	return arr[:]
+}
+
 func sliceArrayArgs(arr []int, low, high int) []int {
 	return arr[low:high]
 }
