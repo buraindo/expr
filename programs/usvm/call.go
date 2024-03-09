@@ -53,10 +53,64 @@ func (p Person) getAge() int {
 	return p.Age
 }
 
+func callMethod(i int) int {
+	p := Person{Age: i + 2}
+	return p.getAge()
+}
+
 func callBoundClosure(i int) int {
 	p := Person{Age: i + 2}
 	f := p.getAge
 	return f()
+}
+
+type SuperInt int
+
+func (s SuperInt) sqr() int {
+	i := int(s)
+	return i * i
+}
+
+func (s SuperInt) add(j int) int {
+	i := int(s)
+	return i + j
+}
+
+func callSuperIntSqr(i int) int {
+	if i >= 0 && i <= 1 {
+		return i
+	}
+	return SuperInt(i).sqr()
+}
+
+func callConstSuperIntAdd(i int) int {
+	return SuperInt(2).add(i)
+}
+
+type Squarer interface {
+	sqr() int
+}
+
+func callIntSquarerSqr(i int) int {
+	if i >= 0 && i <= 1 {
+		return i
+	}
+	return Squarer(SuperInt(i)).sqr()
+}
+
+type SquarerImpl struct {
+	i int
+}
+
+func (s SquarerImpl) sqr() int {
+	return s.i * s.i
+}
+
+func callStructSquarerSqr(i int) int {
+	if i >= 0 && i <= 1 {
+		return i
+	}
+	return Squarer(SquarerImpl{i: i}).sqr()
 }
 
 func main() {}

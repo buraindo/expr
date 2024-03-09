@@ -18,8 +18,8 @@ func returnString(i int) string {
 
 func typeAssert(a int) int {
 	var b interface{} = a
-	c := b.(int64)
-	return int(c)
+	c := b.(int)
+	return int(c) + 2
 }
 
 // Алиас на примитив
@@ -53,10 +53,5 @@ func changeSuperInt(i *SuperInt) {
 }
 
 func main() {
-	compareSuperInt(2, 2)
-	printSuperInt(2)
-
-	i := SuperInt(2)
-	changeSuperInt(&i)
-	fmt.Println(i)
+	fmt.Println(typeAssert(2))
 }
