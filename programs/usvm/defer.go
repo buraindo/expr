@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func simple(a int) (b int) {
 	defer func() {
 		b++
