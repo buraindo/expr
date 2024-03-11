@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sort"
 )
 
@@ -113,4 +114,11 @@ func callStructSquarerSqr(i int) int {
 	return Squarer(SquarerImpl{i: i}).sqr()
 }
 
-func main() {}
+func main() {
+	n := 2
+	i := Squarer(SuperInt(n))
+	j := Squarer(SuperInt(n))
+	fmt.Println(i == j, i, j)
+	n = 3
+	fmt.Println(i == j, i, j)
+}

@@ -1,8 +1,22 @@
 package main
 
-func simple(a int) int {
+import "fmt"
+
+func simple(a int) (b int) {
 	defer func() {
-		a++
+		b++
+		defer func() {
+			b++
+		}()
+		defer func() {
+			defer func() {
+				defer func() {
+					b++
+				}()
+				b++
+			}()
+			b++
+		}()
 	}()
 
 	return a
