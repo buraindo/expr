@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func simple(a int) (b int) {
 	defer func() {
 		b++
@@ -20,4 +22,21 @@ func simple(a int) (b int) {
 	return a
 }
 
-func main() {}
+func panicking() {
+	panic("oh no")
+}
+
+func panicRecover(a int) (b int) {
+	defer func() {
+		if r := recover(); r != nil {
+			b = 2
+		}
+	}()
+
+	panicking()
+	return 1000
+}
+
+func main() {
+	fmt.Println(panicRecover(1))
+}

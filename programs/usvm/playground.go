@@ -22,6 +22,16 @@ func typeAssert(a int) int {
 	return int(c) + 2
 }
 
+func typeAssertFail(a int) int {
+	var b interface{} = int(2)
+	c := b.(int64)
+	return int(c) + a
+}
+
+func genericShit[T int](a T) bool {
+	return a > 1
+}
+
 // Алиас на примитив
 type SuperInt int
 

@@ -27,6 +27,15 @@ func setPerfectAge(p Person) int {
 	return p.Age
 }
 
+func setPerfectAgePointer(p *Person) int {
+	if p.Gender {
+		p.Age = 18
+		return p.Age
+	}
+	p.Age = 25
+	return p.Age
+}
+
 func (p Person) isYoung() bool {
 	return !isOld(p)
 }
