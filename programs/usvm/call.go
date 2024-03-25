@@ -17,10 +17,6 @@ func min3(a, b, c int) int {
 }
 
 func stdSort(data []int) []int {
-	if len(data) != 7 {
-		return data
-	}
-
 	sort.Ints(data)
 	return data
 }

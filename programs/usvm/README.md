@@ -1,14 +1,18 @@
-# Работает, генерятся аргументы
+# Работает, генерируются аргументы
 
-+ sort.go
-+ panic.go
-+ call.go: min3
++ builtin.go
++ call.go
++ if.go
++ leetcode.go
 + loop.go
 + map.go
++ panic.go
 + pointer.go
 + slice.go
++ sort.go
 + struct.go
 
 # Не работает, в процессе
 
-+ call.go: stdSort
++ defer.go: panicRecover
++ playground.go: genericSimple

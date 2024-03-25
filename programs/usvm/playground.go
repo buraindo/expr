@@ -28,7 +28,7 @@ func typeAssertFail(a int) int {
 	return int(c) + a
 }
 
-func genericShit[T int](a T) bool {
+func genericSimple[T int](a T) bool {
 	return a > 1
 }
 
